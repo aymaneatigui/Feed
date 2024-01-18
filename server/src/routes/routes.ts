@@ -1,19 +1,21 @@
 import { Router } from "express";
-import { addItems, deleteItems, getItems, updateItems } from "../middleware/items";
-import { addCategory, deleteCategory, getCategory, updateCategory } from "../middleware/category";
+import { addItem, deleteItem, getItems, updateItem } from "../middleware/items";
+import { addCategory, deleteCategory, getCategories, updateCategory } from "../middleware/categories";
 
 const routes = Router()
 
 // Items
 routes.get("/items", getItems)
-routes.post("/items", addItems)
-routes.put("/items/:itemsId", updateItems)
-routes.delete("/items/:itemsId", deleteItems)
+routes.post("/item", addItem)
+routes.put("/item/:itemId", updateItem)
+routes.delete("/item/:itemId", deleteItem)
 
 // Category
-routes.get("/category", getCategory)
+routes.get("/categories", getCategories)
 routes.post("/category", addCategory)
 routes.put("/category/:categoryId", updateCategory)
 routes.delete("/category/:categoryId", deleteCategory)
+
+
 
 export default routes;

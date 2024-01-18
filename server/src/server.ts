@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import routes from "./routes/routes"
+import errorHandler from "./errors/errorHandler";
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/auth", routes);
-
+app.use("/api", routes);
+app.use(errorHandler)
 
 export default app;
