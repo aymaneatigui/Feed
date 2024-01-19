@@ -25,7 +25,6 @@ export const addItem = async (req, res, next) => {
     res.status(201).json({ data: item });
     next();
   } catch (error) {
-    console.log(error);
     const err = new Error("error in addItem");
     err.name = "BadRequestError";
     return next(err);
@@ -61,7 +60,6 @@ export const updateItem = async (req, res, next) => {
     res.status(200).json({ data: item });
     next();
   } catch (error) {
-    console.log(error);
     const err = new Error("error in updateItem");
     err.name = "BadRequestError";
     return next(err);
@@ -74,7 +72,6 @@ export const deleteItem = async (req, res, next) => {
     const itemId = req.params?.itemId;
 
     const exsit = await checkItemId(itemId)
-    console.log(exsit)
     if (!exsit) {
       const err = new Error("this item dont exsit");
       err.name = "NotFoundError";

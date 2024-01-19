@@ -46,7 +46,6 @@ export const updateCategory = async (req, res, next) => {
     if(req.body?.position){
       categoryData.position = parseInt(req.body.position);
     }
-    console.log(req.body?.position)
     const category = await prisma.categories.update({
       where: { id: categoryId },
       data: categoryData,
@@ -55,7 +54,6 @@ export const updateCategory = async (req, res, next) => {
     next();
 
   } catch (error) {
-    console.log(error)
     const err = new Error("error in updateCategory");
     err.name = "BadRequestError";
     return next(err);
