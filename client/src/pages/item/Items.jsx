@@ -1,7 +1,7 @@
 import useItems from "../../hooks/useItems.jsx";
 
 const Items = () => {
-  const {items} = useItems();
+  const { items } = useItems();
   return (
     <>
       <div>Items:</div>
@@ -13,7 +13,7 @@ const Items = () => {
           <p>{item.isAvailable ? "Available" : "Not Available"}</p>
           <p>{item.createdAt}</p>
         </div>
-      ))} 
+      ))}
     </>
   );
 };

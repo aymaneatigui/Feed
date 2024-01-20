@@ -7,15 +7,17 @@ const Manager = () => {
       <div> Manager : </div>
       {Object.entries(categoryItem).map(([key, value]) => (
         <div key={key}>
-          <h3>Category ID: {key}</h3>
+          <h3>---Category ID: {key} ----</h3>
           {value.map((item) => (
             <div key={item.id}>
+              <p>Id : {item.id}</p>
               <p>Item ID: {item.itemId}</p>
               <p>Position: {item.position}</p>
             </div>
           ))}
         </div>
       ))}
+
     </>
   );
 };

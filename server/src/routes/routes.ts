@@ -6,13 +6,13 @@ import { addCategoryItem, deleteCategoryItem, getCategoryItem, updateCategoryIte
 const routes = Router()
 
 // Items
-routes.get("/items", getItems)
+routes.get("/item", getItems)
 routes.post("/item", addItem)
 routes.put("/item/:itemId", updateItem)
 routes.delete("/item/:itemId", deleteItem)
 
 // Category
-routes.get("/categories", getCategories)
+routes.get("/category", getCategories)
 routes.post("/category", addCategory)
 routes.put("/category/:categoryId", updateCategory)
 routes.delete("/category/:categoryId", deleteCategory)

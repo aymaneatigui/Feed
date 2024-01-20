@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getItems } from "../features/items/itemsAction.jsx";
+import { getItemsAc } from "../features/items/itemsAction.jsx";
 
 const useItems = () => {
   const dispatch = useDispatch();
-
   const { items } = useSelector((state) => state.items);
 
+  //Get Items :
   useEffect(() => {
-    dispatch(getItems());
+    dispatch(getItemsAc());
   }, [dispatch]);
 
   return { items: items || [] };

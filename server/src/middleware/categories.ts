@@ -36,14 +36,14 @@ export const updateCategory = async (req, res, next) => {
     const categoryId = req.params?.categoryId;
 
     //Check if Category exsit
-    const exsit = await checkCategoryId(categoryId)
+    const exsit = await checkCategoryId(categoryId);
     if (!exsit) {
       const err = new Error("this category dont exsit");
       err.name = "NotFoundError";
       next(err);
     }
     const categoryData = { ...req.body };
-    if(req.body?.position){
+    if (req.body?.position) {
       categoryData.position = parseInt(req.body.position);
     }
     const category = await prisma.categories.update({
@@ -52,7 +52,6 @@ export const updateCategory = async (req, res, next) => {
     });
     res.status(200).json({ data: category });
     next();
-
   } catch (error) {
     const err = new Error("error in updateCategory");
     err.name = "BadRequestError";
@@ -61,18 +60,23 @@ export const updateCategory = async (req, res, next) => {
 };
 export const deleteCategory = async (req, res, next) => {
   try {
-
     const categoryId = req.params?.categoryId;
     //Check if Category exsit
-    const exsit = await checkCategoryId(categoryId)
+    const exsit = await checkCategoryId(categoryId);
     if (!exsit) {
       const err = new Error("this category dont exsit");
       err.name = "NotFoundError";
       next(err);
     }
 
-    await prisma.categories.delete({ where: { id: categoryId } });
-    res.status(204).send();
+    await prisma.categoryItem.deleteMany({
+      where: { categoryId },
+    });
+
+    const category = await prisma.categories.delete({
+      where: { id: categoryId },
+    });
+    res.status(200).json({ data: category });
     next();
   } catch (error) {
     const err = new Error("error in deleteCategory");
@@ -81,9 +85,7 @@ export const deleteCategory = async (req, res, next) => {
   }
 };
 
-
 //Check if Item exsit
 export const checkCategoryId = async (id) => {
   return await prisma.categories.findUnique({ where: { id } });
 };
-

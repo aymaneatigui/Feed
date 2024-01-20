@@ -28,20 +28,20 @@ export const addCategoryItem = async (req, res, next) => {
     }
 
     //Check if Category exsit
-    const categorieExsit = await checkCategoryId(req.body.categoryId);
-    if (!categorieExsit) {
-      const err = new Error("this category dont exsit");
-      err.name = "NotFoundError";
-      next(err);
-    }
+    // const categorieExsit = await checkCategoryId(req.body.categoryId);
+    // if (!categorieExsit) {
+    //   const err = new Error("this category dont exsit");
+    //   err.name = "NotFoundError";
+    //   next(err);
+    // }
 
     //Check if Item exsit
-    const ItemExsit = await checkItemId(req.body.itemId);
-    if (!ItemExsit) {
-      const err = new Error("this item dont exsit");
-      err.name = "NotFoundError";
-      next(err);
-    }
+    // const ItemExsit = await checkItemId(req.body.itemId);
+    // if (!ItemExsit) {
+    //   const err = new Error("this item dont exsit");
+    //   err.name = "NotFoundError";
+    //   next(err);
+    // }
 
     const position = parseInt(req.body?.position);
 
@@ -63,11 +63,10 @@ export const addCategoryItem = async (req, res, next) => {
 export const updateCategoryItem = async (req, res, next) => {
   try {
     let updates = req.body;
-    
     // Check if updates is not an array
     if (!Array.isArray(updates)) {
       updates = [updates];
-    } 
+    }
     await prisma.$transaction(async (prisma) => {
       for (const update of updates) {
         const { id, position } = update;
@@ -85,7 +84,6 @@ export const updateCategoryItem = async (req, res, next) => {
     res.status(200).json({ message: "updated successfully" });
     next();
   } catch (error) {
-    console.log(error);
     const err = new Error("error in updateCategoryItem");
     err.name = "BadRequestError";
     return next(err);
@@ -95,7 +93,7 @@ export const updateCategoryItem = async (req, res, next) => {
 // Delete CategoryItem
 export const deleteCategoryItem = async (req, res, next) => {
   try {
-    const CategoryItemIds = req.body;
+    let CategoryItemIds = req.body;
 
     // Start a transaction
     await prisma.$transaction(async (prisma) => {
@@ -109,6 +107,7 @@ export const deleteCategoryItem = async (req, res, next) => {
     res.status(204).send();
     next();
   } catch (error) {
+    console.error(error)
     const err = new Error("error in deleteCategoryItem");
     err.name = "BadRequestError";
     return next(err);

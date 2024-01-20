@@ -37,7 +37,7 @@ export const updateItem = async (req, res, next) => {
     const itemId = req.params.itemId;
 
     //Check if Item exsit
-    const exsit = await checkItemId(itemId)
+    const exsit = await checkItemId(itemId);
     if (!exsit) {
       const err = new Error("this item dont exsit");
       err.name = "NotFoundError";
@@ -45,13 +45,13 @@ export const updateItem = async (req, res, next) => {
     }
 
     const itemData = { ...req.body };
-    if(req.body?.price){
-        itemData.price = parseFloat(req.body.price);
+    if (req.body?.price) {
+      itemData.price = parseFloat(req.body.price);
     }
-    if(req.body?.isAvailable){
-        itemData.isAvailable = req.body.isAvailable?.toLowerCase() === "true";
+    if (req.body?.isAvailable) {
+      itemData.isAvailable =
+        req.body.isAvailable.toString().toLowerCase() === "true";
     }
-
 
     const item = await prisma.items.update({
       where: { id: itemId },
@@ -71,15 +71,19 @@ export const deleteItem = async (req, res, next) => {
   try {
     const itemId = req.params?.itemId;
 
-    const exsit = await checkItemId(itemId)
+    const exsit = await checkItemId(itemId);
     if (!exsit) {
       const err = new Error("this item dont exsit");
       err.name = "NotFoundError";
       next(err);
     }
 
-    await prisma.items.delete({ where: { id: itemId } });
-    res.status(204).send();
+    await prisma.categoryItem.deleteMany({
+      where: { itemId },
+    });
+
+    const item = await prisma.items.delete({ where: { id: itemId } });
+    res.status(200).json({ data: item });
     next();
   } catch (error) {
     const err = new Error("error in deleteItem");

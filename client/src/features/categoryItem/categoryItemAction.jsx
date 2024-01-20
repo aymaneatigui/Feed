@@ -1,13 +1,65 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = `http://localhost:3001/api/categoryItem`;
+const categoryItem_url = `http://localhost:3001/api/categoryItem`;
+const api = axios.create({
+  headers: { "Cache-Control": "no-cache" },
+});
 
-export const getCategoryItem = createAsyncThunk(
+export const getCategoryItemAc = createAsyncThunk(
   "categoryItem/getCategoryItem",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(url);
+      const res = await api.get(categoryItem_url);
+      return res.data;
+    } catch (error) {
+      if (!error.response?.data?.message) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const addCategoryItemAc = createAsyncThunk(
+  "categoryItem/addCategoryItem",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await api.post(categoryItem_url, data);
+      dispatch(getCategoryItemAc());
+
+      return res.data;
+    } catch (error) {
+      if (!error.response?.data?.message) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const updateCategoryItemAc = createAsyncThunk(
+  "items/updateItem",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await api.put(categoryItem_url, data);
+      dispatch(getCategoryItemAc());
+      return res.data;
+    } catch (error) {
+      if (!error.response?.data?.message) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export const deleteCategoryItemAc = createAsyncThunk(
+  "items/deleteItem",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await api.delete(categoryItem_url, { data });
+      dispatch(getCategoryItemAc());
       return res.data;
     } catch (error) {
       if (!error.response?.data?.message) {

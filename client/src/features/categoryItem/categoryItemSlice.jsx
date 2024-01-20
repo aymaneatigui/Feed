@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {getCategoryItem} from "./categoryItemAction.jsx";
+import {
+  addCategoryItemAc,
+  deleteCategoryItemAc,
+  getCategoryItemAc,
+  updateCategoryItemAc,
+} from "./categoryItemAction.jsx";
 
 const initialState = {
   error: null,
@@ -15,25 +20,73 @@ const categoryItem = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(getCategoryItem.pending, (state) => {
+      // Get CategoryItem
+      .addCase(getCategoryItemAc.pending, (state) => {
         state.status = "loading";
         state.error = null;
       })
-      .addCase(getCategoryItem.fulfilled, (state, action) => {
+      .addCase(getCategoryItemAc.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.categoryItem = action.payload.data;
         state.error = null;
         localStorage.setItem(
           "categoryItem",
-          JSON.stringify(action.payload.data),
+          JSON.stringify(state.categoryItem),
         );
       })
-      .addCase(getCategoryItem.rejected, (state, action) => {
+      .addCase(getCategoryItemAc.rejected, (state, action) => {
         state.status = "failed";
         action.payload
           ? (state.error = action.payload)
           : (state.error = action.error.message);
-        console.log(state.error);
+      })
+
+      // Add CategoryItem
+      .addCase(addCategoryItemAc.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(addCategoryItemAc.fulfilled, (state) => {
+        state.status = "succeeded";
+        state.error = null;
+      })
+      .addCase(addCategoryItemAc.rejected, (state, action) => {
+        state.status = "failed";
+        action.payload
+          ? (state.error = action.payload)
+          : (state.error = action.error.message);
+      })
+
+      // update CategoryItem
+      .addCase(updateCategoryItemAc.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(updateCategoryItemAc.fulfilled, (state) => {
+        state.status = "succeeded";
+        state.error = null;
+      })
+      .addCase(updateCategoryItemAc.rejected, (state, action) => {
+        state.status = "failed";
+        action.payload
+          ? (state.error = action.payload)
+          : (state.error = action.error.message);
+      })
+
+      // Delete CategoryItem
+      .addCase(deleteCategoryItemAc.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(deleteCategoryItemAc.fulfilled, (state) => {
+        state.status = "succeeded";
+        state.error = null;
+      })
+      .addCase(deleteCategoryItemAc.rejected, (state, action) => {
+        state.status = "failed";
+        action.payload
+          ? (state.error = action.payload)
+          : (state.error = action.error.message);
       });
   },
 });
