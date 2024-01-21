@@ -13,12 +13,17 @@ import ItemCreate from "./pages/item/ItemCreate.jsx";
 import Categories from "./pages/category/Categories.jsx";
 import CategoryCreate from "./pages/category/CategoryCreate.jsx";
 import CategoryDetails from "./pages/category/CategoryDetails.jsx";
+// Components
+import Header from "./pages/Header.jsx";
+import MobileSideBar from "./pages/MobileSideBar.jsx";
 
 function App() {
   return (
-    <div className="font-inter h-screen w-full bg-zinc-100">
+    <div className="">
       <Router>
         <Provider store={store}>
+          <Header />
+          <MobileSideBar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/manager" element={<Manager />} />
