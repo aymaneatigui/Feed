@@ -9,9 +9,11 @@ export default {
       },
       screens: {
         xs: "475px",
-      }
+      },
     },
-   
   },
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };

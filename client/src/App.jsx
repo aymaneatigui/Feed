@@ -34,6 +34,7 @@ function App() {
             <Route path="/categories" element={<Categories />} />
             <Route path="/category/create" element={<CategoryCreate />} />
             <Route path="/category/:categoryId" element={<CategoryDetails />} />
+            <Route path="/notfound" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Provider>

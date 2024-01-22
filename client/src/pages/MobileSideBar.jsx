@@ -11,9 +11,9 @@ const MobileSideBar = () => {
     >
       <div className="flex h-16 w-full items-center justify-between py-2 ">
         {/* Logo */}
-        <h1 className="text-3xl font-extrabold">Feed.</h1>
+        <h1 className="text-3xl select-none font-extrabold">Feed.</h1>
         <div
-          className="cursor-pointer rounded-lg border border-slate-900/30 p-[6px] hover:border-slate-900/80 "
+          className="cursor-pointer select-none rounded-lg border border-slate-900/30 p-[6px] hover:border-slate-900/80 "
           onClick={closeMenu}
         >
           <img

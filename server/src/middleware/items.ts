@@ -17,7 +17,7 @@ export const getItems = async (req, res, next) => {
 export const addItem = async (req, res, next) => {
   try {
     const price = parseFloat(req.body.price);
-    const isAvailable = req.body.isAvailable.toLowerCase() === "true";
+    const isAvailable = req.body?.isAvailable?.toLowerCase() === "true";
 
     const item = await prisma.items.create({
       data: { ...req.body, price, isAvailable },
@@ -25,6 +25,7 @@ export const addItem = async (req, res, next) => {
     res.status(201).json({ data: item });
     next();
   } catch (error) {
+    console.log(error);
     const err = new Error("error in addItem");
     err.name = "BadRequestError";
     return next(err);

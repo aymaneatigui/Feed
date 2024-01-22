@@ -11,10 +11,10 @@ const Header = () => {
         <div className="mr-8 flex h-12 w-16 items-center justify-center md:hidden">
           {!sidebar ? (
             <div
-              className="cursor-pointer rounded-md border border-slate-900/30 p-[7px] hover:border-slate-900/80"
+              className="cursor-pointer select-none rounded-md border border-slate-900/30 p-[7px] hover:border-slate-900/80"
               onClick={openMenu}
             >
-              <img src="/menu.svg" alt="openMenu" className="w-5" />
+              <img src="/menu.svg" alt="openMenu" className="w-5 select-none" />
             </div>
           ) : (
             <div
@@ -31,7 +31,7 @@ const Header = () => {
         </div>
         {/* Logo */}
         <div className="flex h-full w-full items-center justify-start">
-          <h1 className="text-3xl font-extrabold sm:text-4xl">
+          <h1 className="text-3xl select-none font-extrabold sm:text-4xl">
             <Link to={'/'}>Feed.</Link>
           </h1>
         </div>

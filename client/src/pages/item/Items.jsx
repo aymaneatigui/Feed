@@ -11,7 +11,7 @@ const Items = () => {
       <div className="mx-3 flex h-full w-full flex-col overflow-hidden">
         <div className="mb-3 flex w-full items-center justify-between">
           <Link
-            to={"/items/create"}
+            to={"/item/create"}
             className="ml-3 w-fit cursor-pointer whitespace-nowrap rounded-full border border-dashed border-gray-900 px-5 py-2 leading-tight hover:bg-gray-300/50 "
           >
             New Item

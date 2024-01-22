@@ -10,8 +10,14 @@ const useItems = () => {
   useEffect(() => {
     dispatch(getItemsAc());
   }, [dispatch]);
+  
+  // Function to find an item by id
+  const findItemById = (itemId) => {
+    const foundItem = items.find((item) => item?.id === itemId);
+    return foundItem || false;
+  };
 
-  return { items: items || [] };
+  return { items: items || [], findItemById };
 };
 
 export default useItems;
