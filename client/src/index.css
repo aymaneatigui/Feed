@@ -7,10 +7,11 @@
   margin: 0;
   box-sizing: border-box;
   @apply font-inter text-slate-900;
-
+}
+.myScrollbar {
+  @apply scroll-smooth scrollbar-thin scrollbar-thumb-zinc-300 scrollbar-thumb-rounded-lg hover:scrollbar-thumb-zinc-400;
 }
 
 body {
-  @apply scroll-smooth scrollbar-thin scrollbar-track-zinc-200 scrollbar-thumb-zinc-400 scrollbar-thumb-rounded-lg hover:scrollbar-thumb-zinc-500 overflow-x-hidden;
-  @apply bg-zinc-200;
+  @apply bg-zinc-200 scrollbar-none;
 }

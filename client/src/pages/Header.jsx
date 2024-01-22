@@ -5,7 +5,7 @@ const Header = () => {
   const { sidebar, openMenu, closeMenu } = useHeader();
 
   return (
-    <header className="z-10 mb-4 flex h-16 w-full items-center px-4 py-2 md:px-12">
+    <header className="z-10 mb-2 flex h-16 w-full items-center px-4 py-2 md:px-12">
       <div className="flex h-full w-full items-center justify-start ">
         {/* Side Bar open/close */}
         <div className="mr-8 flex h-12 w-16 items-center justify-center md:hidden">

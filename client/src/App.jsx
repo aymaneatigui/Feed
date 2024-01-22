@@ -19,11 +19,11 @@ import MobileSideBar from "./pages/MobileSideBar.jsx";
 
 function App() {
   return (
-    <div className="">
+    <div className="m-auto max-w-screen-2xl">
       <Router>
         <Provider store={store}>
           <Header />
-          <MobileSideBar/>
+          <MobileSideBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/manager" element={<Manager />} />

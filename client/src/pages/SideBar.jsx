@@ -8,11 +8,11 @@ const SideBar = () => {
     "font-semibold rounded-l-sm border-l-zinc-500  bg-gray-300/50 px-4 py-2 border-l-4";
 
   return (
-    <aside className="hidden h-screen w-52 min-w-52  md:block">
-      <div className="flex h-auto w-full flex-col px-6 font-medium">
+    <aside className="hidden h-[calc(100vh-100px)] w-52 min-w-52 md:block">
+      <div className="flex h-auto w-full flex-col pl-6 font-medium">
         <Link
           to={"/items"}
-          className={`my-2 w-full px-4 py-2 hover:bg-gray-300/50 rounded-r-md
+          className={`mb-2 w-full px-4 py-2 hover:bg-gray-300/50 rounded-r-md
             ${activePage == "items" && activeStyle}`}
         >
           Items
