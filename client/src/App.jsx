@@ -6,7 +6,7 @@ import store from "./store";
 // import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Manager from "./pages/manager/Manager.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Items from "./pages/item/Items.jsx";
 import ItemDetail from "./pages/item/ItemDetails.jsx";
 import ItemCreate from "./pages/item/ItemCreate.jsx";
@@ -25,7 +25,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/manager" element={<Manager />} />
-            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             <Route path="/items" element={<Items />} />
             <Route path="/item/create" element={<ItemCreate />} />
             <Route path="/item/:itemId" element={<ItemDetail />} />

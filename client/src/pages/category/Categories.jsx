@@ -11,11 +11,11 @@ import { getCategoryItemAc } from "../../features/categoryItem/categoryItemActio
 const Categories = () => {
   const { categories } = useCategories();
   const { categoryItem } = useSelector((state) => state.categoryItem);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategoriesAc());
-    dispatch(getCategoryItemAc())
+    dispatch(getCategoryItemAc());
   }, [dispatch]);
 
   const catItemsQte = (id) => {
@@ -51,18 +51,27 @@ const Categories = () => {
             <table className="w-full  divide-y divide-gray-200 text-left text-sm text-gray-500">
               <thead className="h-14 bg-zinc-100 text-xs uppercase text-gray-700">
                 <tr>
-                  <th scope="col" className="px-3 py-3 text-center">
+                  <th
+                    scope="col"
+                    className=" px-6 py-6 text-left"
+                    style={{ width: "20%" }}
+                  >
                     Label
                   </th>
                   <th
                     scope="col"
-                    className="whitespace-nowrap px-3 py-3 text-left"
+                    className=" whitespace-nowrap px-6 py-6 text-left"
+                    style={{ width: "20%" }}
                   >
                     Number Of Items
                   </th>
-                  {/* <th scope="col" className=" px-3 py-3 text-center">
+                  <th
+                    scope="col"
+                    className=" px-6 py-6 text-left"
+                    style={{ width: "60%" }}
+                  >
                     Details
-                  </th> */}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +81,7 @@ const Categories = () => {
                       key={category.id}
                       category={category}
                       qte={catItemsQte(category?.id)}
+                      items={categoryItem[category.id]}
                     />
                   );
                 })}

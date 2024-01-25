@@ -41,12 +41,6 @@ const useItems = () => {
         filtredList = filtredList.sort((a, b) => b.label - a.label);
         break;
     }
-    // if (sort == "created") {
-    //   filtredList = filtredList.sort(
-    //     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-    //   );
-    // }
-    console.log(filtredList);
     setList(filtredList);
   }, [filtred, items, sort]);
 
@@ -59,7 +53,7 @@ const useItems = () => {
   const sortRef = useRef();
 
   const handleClickOutside = (e) => {
-    if (sortRef.current.contains(e.target)) {
+    if (sortRef.current?.contains(e.target)) {
       return;
     }
     setEditSort(false);

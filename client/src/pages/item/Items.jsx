@@ -85,12 +85,12 @@ const Items = () => {
                 </svg>
               </button>
               <div
-                className={`${!editSort && "hidden"}  absolute right-0 top-9 flex h-36 w-32 cursor-default flex-col overflow-hidden rounded-md border border-zinc-900/30 bg-zinc-50 pb-3  shadow-md duration-500 ease-in-out`}
+                className={`${!editSort && "hidden"}  z-10 absolute right-0 top-9 flex h-36 w-32 cursor-default flex-col overflow-hidden rounded-md border border-zinc-900/30 bg-zinc-50 pb-3  shadow-md duration-500 ease-in-out`}
               >
                 <span className="my-1 h-5 w-full p-1 px-2 text-xs text-zinc-500">
                   Sort by :
                 </span>
-                <div className="mt-1 flex h-full w-full flex-col text-sm font-medium">
+                <div className="mt-1  flex h-full w-full flex-col text-sm font-medium">
                   <span
                     onClick={() => setSort("label")}
                     className={`flex h-full w-full cursor-pointer items-center justify-start text-xs text-gray-700 hover:bg-gray-300/30

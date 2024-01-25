@@ -46,7 +46,9 @@ const Manager = () => {
               </div>
             )}
           </div>
-          <div className="flex ">
+          <div className="flex justify-between flex-col xs:flex-row ">
+          {movedItems.length <= 0 && (
+
             <div
               onClick={() => {
                 if (selectedItems.length != 0 && selectedCategory != null) {
@@ -57,18 +59,28 @@ const Manager = () => {
                   );
                 }
               }}
-              className="mr-2 mt-2 flex h-12 w-fit cursor-pointer select-none items-center justify-center self-start  whitespace-nowrap rounded-full border border-dashed border-gray-900 bg-zinc-50 px-7 py-2  hover:bg-zinc-50/50 lg:ml-5 lg:mr-3 lg:mt-0  "
+              className="mr-2 mt-2 flex h-12 w-full xs:w-fit cursor-pointer select-none items-center justify-center self-start  whitespace-nowrap rounded-full border border-dashed border-gray-900 bg-zinc-50 px-7 py-2  hover:bg-zinc-50/50 lg:ml-5 lg:mr-3 lg:mt-0  "
             >
               Associate
-            </div>
+            </div>)}
             {movedItems.length > 0 && (
-              <div
-                onClick={() => {
-                  updatePositions();
-                }}
-                className="mt-2 flex h-12 w-fit cursor-pointer select-none items-center justify-center self-start  whitespace-nowrap rounded-full border border-dashed border-gray-900 bg-orange-100/25  px-7 py-2  hover:bg-zinc-50/50 lg:ml-5 lg:mr-3 lg:mt-0  "
-              >
-                Update
+              <div className="flex  justify-evenly  xs:justify-end">
+                <div
+                  onClick={() => {
+                    updatePositions();
+                  }}
+                  className="mt-2 flex h-12 w-fit cursor-pointer select-none items-center justify-center self-start  whitespace-nowrap rounded-full border border-dashed border-gray-900 bg-orange-100/15  px-6 py-1  hover:bg-zinc-50/50 lg:ml-5 mx-2 lg:mx-0 lg:mt-0  "
+                >
+                  Update
+                </div>
+                <div
+                  onClick={() => {
+                    window.location.reload();
+                  }}
+                  className="mt-2 flex h-12 w-fit cursor-pointer select-none items-center justify-center self-start  whitespace-nowrap rounded-full border border-dashed border-gray-900 bg-orange-100/15  px-6  py-1  hover:bg-zinc-50/50 lg:ml-5 mx-2 lg:mt-0  "
+                >
+                  Cancel
+                </div>
               </div>
             )}
           </div>
