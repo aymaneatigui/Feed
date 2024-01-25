@@ -5,14 +5,19 @@
 ">
 </p>
 
+## By [AYMANE ATIGUI](https://github.com/aymaneatigui).
+
+- Website - [https://atigui.tech](https://www.atigui.tech)
+- Linkedin - [aymaneatigui](https://www.linkedin.com/in/aymane-atigui)
+- Github - [aymaneatigui](https://github.com/aymaneatigui)
+- Twitter - [@aymane_atigui](https://twitter.com/aymane_atigui)
+
 ## Table of Contents
 
 - [Feed](#feed)
 - [Table of Contents](#table-of-contents)
 - [Setup](#setup)
-- [System requirements](#system-requirements)
-- [Technologies Used](#technologies-used)
-- [Data Modeling and Design](#data-modeling-and-design)
+- [Data Modeling and Technology used](#data-modeling-and-technology-used)
 - [Screenshot](#screenshot)
 
 # Setup
@@ -24,13 +29,9 @@ This project requires the following software to be correctly installed on your s
 - `node v20.9`
 - `npm  10.2.3`
 
-## Database Setup
+## Server-Side Configuration
 
 This project uses `MongoDB` with `Prisma`. You need to create a database called `feed`.
-
-## Configuration
-
-## Server-Side Configuration
 
 First, navigate to the server side of the project in your terminal. Then, install all the dependencies by running:
 
