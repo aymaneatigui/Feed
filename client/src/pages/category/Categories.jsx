@@ -48,7 +48,7 @@ const Categories = () => {
         </div>
         <section className="my-3 h-full w-full overflow-hidden rounded-2xl border border-gray-900/10 bg-zinc-100">
           <div className="myScrollbar h-full w-full overflow-auto">
-            <table className="w-full  divide-y divide-gray-200 text-left text-sm text-gray-500">
+            <table className="w-full border-b-2 divide-y divide-gray-200 text-left text-sm text-gray-500">
               <thead className="h-14 bg-zinc-100 text-xs uppercase text-gray-700">
                 <tr>
                   <th
@@ -70,7 +70,7 @@ const Categories = () => {
                     className=" px-6 py-6 text-left"
                     style={{ width: "60%" }}
                   >
-                    Details
+                    Items
                   </th>
                 </tr>
               </thead>

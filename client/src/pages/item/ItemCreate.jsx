@@ -9,7 +9,7 @@ const ItemCreate = () => {
       <SideBar />
       <div className="mx-3 flex h-full w-full flex-col overflow-hidden">
         <div className="mb-3 flex w-full items-center justify-between px-5">
-          <div>{"Items > Coffee"}</div>
+          <div></div>
         </div>
         <section className="my-3 h-full w-full overflow-hidden rounded-2xl border border-gray-900/10 bg-zinc-100">
           <form

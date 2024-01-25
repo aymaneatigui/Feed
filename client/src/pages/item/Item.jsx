@@ -17,7 +17,7 @@ const Item = ({ item }) => {
   return (
     <tr key={item.id} className="border-b bg-white">
       <td className="px-6 py-4">{label}</td>
-      <td className="whitespace-nowrap px-6 py-4">{price}</td>
+      <td className="whitespace-nowrap pr-10 pl-6 py-4 text-right">{price}</td>
       <td className="whitespace-nowrap px-6 py-4 text-xs">{`${relativeTime} ago`}</td>
       <td className="px-6 py-4">{description}</td>
       <td className="px-6 py-4 text-center">

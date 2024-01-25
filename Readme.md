@@ -1,42 +1,115 @@
-Objectif :
-Développer une application web dynamique en utilisant Node.js pour le backend et React pour le frontend, le tout en typescript.
-Le but de cette application est de fournir une plateforme permettant la gestion et la visualisation d’items et de catégorie.
-Nous ne nous attarderons pas sur l’aspect visuel de l’application, mais nous attendons un design simple et fonctionnel.
-L’application aura 2 sections distinctes. Une sections item et une section catégorie.
-La section item permettera de visualiser les items existants, d’en ajouter, d’en modifier et d’en supprimer.
-Exemple d'item : { label: 'Burger cheddar', description: 'Cheddar, bun, viande'}
-La section categorie permettera de visualiser les catégories existantes, d’en ajouter, d’en modifier et d’en supprimer.
-Exemple de categorie: { label: 'Burger', position: 0 }
-Dans la section categorie, je dois pouvoir selectionner une categorie et voir les items associés à cette categorie.
-Pour la persistance des données, vous pouvez utiliser les technologies et outils de votre choix.
-Fonctionnalités à implémenter :
+# Feed
 
-CRUD items:
-Items = { label: stirng, prix: int, description: string, isAvailable : boolean, createdAt: data }
-Création : Permettre aux utilisateurs d’ajouter de nouveaux items en spécifiant les détails nécessaires.
-Lecture : Afficher une liste des items existants avec la possibilité de les filtrer par status (isAvailable) ou de les trier par date (createdAt).
-Mise à jour : Offrir la possibilité de modifier les informations des items existants.
-Suppression : Permettre la suppression d’items avec une confirmation pour éviter les suppressions accidentelles.
+<p align="center">
+  <img  height="280" src="client/public/header.png" style="  border-radius: 30px";
+">
+</p>
 
-CRUD catégories :
-Category = { label: string, position: int }
-Création : Permettre l’ajout de nouvelles catégories en définissant un nom et une position.
-Lecture : Afficher une liste des catégories existantes, triée par position, avec la possibilité de visualiser le nombre d’items associés à chaque catégorie.
-Mise à jour : Offrir la possibilité de modifier les détails des catégories.
-Suppression : Permettre la suppression de catégories, avec des vérifications pour éviter d’effacer des catégories contenant des items.
+## Table of Contents
 
-CRUD pour l’association d’items à une catégorie :
-Association : Offrir une interface permettant de facilement associer des items à une catégorie et de changer ces associations si nécessaire. Il faut pouvoir associer une position.
-Modification : Offrir la possibilité de modifier ou de retirer des associations.
+- [Feed](#feed)
+- [Table of Contents](#table-of-contents)
+- [Setup](#setup)
+- [System requirements](#system-requirements)
+- [Technologies Used](#technologies-used)
+- [Data Modeling and Design](#data-modeling-and-design)
+- [Screenshot](#screenshot)
 
-Vue d’ensemble : Afficher une vue d’ensemble de toutes les catégories disponibles avec des statistiques sommaires (nombre d’items).
-Détail d’une catégorie : En cliquant sur une catégorie, l’utilisateur devrait voir une liste détaillée des items associés, triés par position ou d’autres critères pertinents.
-Interface utilisateur : L’interface doit être claire et intuitive, facilitant la navigation entre les différentes fonctionnalités.
+# Setup
 
-Bonus:
-Tout ce qui vous semble pertinent
+## System requirements
 
-Documentation et livraison :
-Code source : Sur ce git
-README : Inclure à la fin du fichier README la procédure d’installation, les exigences système, et comment exécuter l’application.
-Cet exercice vise à évaluer vos compétences techniques, votre capacité à créer une application fonctionnelle et conviviale, ainsi que votre attention aux détails et à la qualité du code. Bonne réalisation !
+This project requires the following software to be correctly installed on your system.
+
+- `node v20.9`
+- `npm  10.2.3`
+
+## Database Setup
+
+This project uses `MongoDB` with `Prisma`. You need to create a database called `feed`.
+
+## Configuration
+
+## Server-Side Configuration
+
+First, navigate to the server side of the project in your terminal. Then, install all the dependencies by running:
+
+```bash
+cd server
+npm install
+```
+
+Create a `.env` file in the server side of the project and include your database link and Port.
+The `.env` file should look something like this:
+
+```bash
+
+PORT=3001
+DATABASE_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net"
+```
+
+Replace `DATABASE_URL` with the actual link to your MongoDB database.
+
+Create the Prisma client and push the database by running:
+
+```bash
+npx prisma db push
+```
+
+## Client-Side Configuration
+
+Then, navigate to the client side in your terminal and do the same:
+
+```bash
+cd client
+npm install
+```
+
+## Running the Project
+
+After installing all the dependencies, you can start the project by using:
+
+```bash
+cd server
+npm run dev
+```
+
+<small>for Start the server</small>
+
+```bash
+cd client
+npm run dev
+```
+
+<small>for Start the client</small>
+
+The project should now be up and running! If you encounter any issues, feel free to reach out to me. I am more than happy to assist you.
+
+# Data Modeling and Technology used
+
+<div style="display: flex; align-items: flex-start; justify-content: center;">
+  <img height="270" src="client/public/screenshots/document.png" style="margin: 10px; border-radius: 15px;" alt="Data Modeling">
+  <img height="270" src="client/public/screenshots/technolgoy.png" alt="Technologies Used" style="border-radius: 15px; margin: 10px; ">
+</div>
+
+# Screenshot
+
+<p align="center">
+  <img  height="370" src="client/public/screenshots/manager.png"  style="margin: 5px; border-radius: 15px;">
+</p>
+
+<div style="display: flex; align-items: center; justify-content: center;">
+    <img  height="470" src="client/public/screenshots/additem.png"  style="margin: 5px; border-radius: 15px;">
+  <img  height="470" src="client/public/screenshots/modals.png"  style="margin: 5px; border-radius: 15px;">
+
+</div>
+
+<p align="center">
+  <img  height="370" src="client/public/screenshots/items.png"  style="margin: 5px; border-radius: 15px;">
+</p>
+
+<div style="display: flex; align-items: center; justify-content: center;">
+  <img  height="350" src="client/public/screenshots/update.png"  style="margin: 5px; border-radius: 15px;">
+    <img  height="400" src="client/public/screenshots/sidebar.png"  style="margin: 5px; border-radius: 15px;">
+
+</div>

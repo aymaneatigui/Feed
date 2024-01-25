@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from "react";
 const SelectCategory = ({ mydata, setSelected }) => {
   const node = useRef();
 
+  const sortedData = mydata
+    .slice()
+    .sort((a, b) => a.label.localeCompare(b.label));
+
   const handleClickOutside = (e) => {
     if (node.current.contains(e.target)) {
       return;
@@ -69,9 +73,9 @@ const SelectCategory = ({ mydata, setSelected }) => {
           onChange={() => setDropdown(!dropdown)}
         />
 
-        <div className="myScrollbar z-20 absolute mt-[70px] hidden max-h-52 w-full flex-col overflow-hidden overflow-y-auto rounded-xl border border-gray-200 bg-white shadow peer-checked:flex sm:mt-1">
+        <div className="myScrollbar absolute z-20 mt-[70px] hidden max-h-52 w-full flex-col overflow-hidden overflow-y-auto rounded-xl border border-gray-200 bg-white shadow peer-checked:flex sm:mt-1">
           {mydata?.length > 0 ? (
-            mydata?.map((item) => {
+            sortedData?.map((item) => {
               return (
                 <div
                   onClick={() => selectItem(item)}

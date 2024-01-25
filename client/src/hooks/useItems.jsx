@@ -38,7 +38,10 @@ const useItems = () => {
         break;
 
       default:
-        filtredList = filtredList.sort((a, b) => b.label - a.label);
+        filtredList = filtredList.sort((a, b) =>
+          a.label.localeCompare(b.label),
+        );
+
         break;
     }
     setList(filtredList);

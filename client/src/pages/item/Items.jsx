@@ -135,7 +135,7 @@ const Items = () => {
                   <th scope="col" className="px-6 py-3">
                     Label
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className=" py-3 pr-10 pl-6 text-center">
                     Price
                   </th>
                   <th scope="col" className="px-6 py-3">
