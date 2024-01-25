@@ -72,7 +72,9 @@ const ItemCreate = () => {
                 </div>
                 <div className="relative col-span-3 w-full  sm:max-w-sm lg:col-span-2">
                   <textarea
-                    {...register("description", { required: "description is required" })}
+                    {...register("description", {
+                      required: "description is required",
+                    })}
                     rows={4}
                     className="block w-full rounded-lg border border-gray-300 bg-zinc-50 p-2.5 ps-3.5  text-sm text-gray-900 focus:border-gray-500 focus:ring-1 focus:ring-gray-500 sm:max-w-sm lg:col-span-2"
                     placeholder="Brief Description..."

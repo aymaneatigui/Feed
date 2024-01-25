@@ -1,18 +1,16 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCategoriesAc } from "../features/categories/categoriesAction.jsx";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const useCategories = () => {
-  const dispatch = useDispatch();
-
   const { categories } = useSelector((state) => state.categories);
 
-  // Get Categories
-  useEffect(() => {
-    dispatch(getCategoriesAc());
-  }, [dispatch]);
+  const [categoriesList, setCategoriesList] = useState([]);
 
-  return { categories: categories || [] };
+  useEffect(() => {
+    setCategoriesList(categories);
+  }, [categories]);
+
+  return { categories: categoriesList };
 };
 
 export default useCategories;

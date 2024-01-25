@@ -14,7 +14,7 @@ routes.delete("/item/:itemId", deleteItem)
 // Category
 routes.get("/category", getCategories)
 routes.post("/category", addCategory)
-routes.put("/category/:categoryId", updateCategory)
+routes.put("/category", updateCategory)
 routes.delete("/category/:categoryId", deleteCategory)
 
 // CategoryItem

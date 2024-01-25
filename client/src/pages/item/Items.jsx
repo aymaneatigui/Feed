@@ -19,7 +19,7 @@ const Items = () => {
         </div>
         <section className="my-3 h-full w-full overflow-hidden rounded-2xl border border-gray-900/10 bg-zinc-100">
           <div className="myScrollbar h-full w-full overflow-auto">
-            <table className="w-full divide-y divide-gray-200 text-left text-sm text-gray-500">
+            <table className="w-full divide-y divide-gray-200 text-left text-sm text-gray-500 border-b-2">
               <thead className="h-14 bg-zinc-100 text-xs uppercase text-gray-700">
                 <tr>
                   <th scope="col" className="px-6 py-3">Label</th>
@@ -31,7 +31,7 @@ const Items = () => {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item) => (
+                {items?.map((item) => (
                   <Item key={item.id} item={item} />
                 ))}
               </tbody>

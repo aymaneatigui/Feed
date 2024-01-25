@@ -6,12 +6,22 @@ import {
   updateItemAc,
 } from "./itemsAction.jsx";
 
+function indexItemsById(items) {
+  return items.reduce((index, item) => {
+    index[item.id] = item;
+    return index;
+  }, {});
+}
+
 const initialState = {
   error: null,
   status: "idle",
   items: localStorage.getItem("items")
     ? JSON.parse(localStorage.getItem("items"))
-    : null,
+    : [],
+  indexedItems: localStorage.getItem("indexedItems")
+    ? JSON.parse(localStorage.getItem("indexedItems"))
+    : [],
 };
 
 const items = createSlice({
@@ -28,8 +38,14 @@ const items = createSlice({
       .addCase(getItemsAc.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.items = action.payload.data;
+        state.indexedItems = indexItemsById(state.items);
+
         state.error = null;
         localStorage.setItem("items", JSON.stringify(state.items));
+        localStorage.setItem(
+          "indexedItems",
+          JSON.stringify(state.indexedItems),
+        );
       })
       .addCase(getItemsAc.rejected, (state, action) => {
         state.status = "failed";
@@ -48,7 +64,12 @@ const items = createSlice({
         state.error = null;
         const newItem = action.payload.data;
         state.items = [...state.items, newItem];
+        state.indexedItems = indexItemsById(state.items);
         localStorage.setItem("items", JSON.stringify(state.items));
+        localStorage.setItem(
+          "indexedItems",
+          JSON.stringify(state.indexedItems),
+        );
       })
       .addCase(addItemAc.rejected, (state, action) => {
         state.status = "failed";
@@ -92,7 +113,13 @@ const items = createSlice({
         state.items = state.items.filter(
           (item) => item?.id !== deletedItem?.id,
         );
+        state.indexedItems = indexItemsById(state.items);
+
         localStorage.setItem("items", JSON.stringify(state.items));
+        localStorage.setItem(
+          "indexedItems",
+          JSON.stringify(state.indexedItems),
+        );
       })
       .addCase(deleteItemAc.rejected, (state, action) => {
         state.status = "failed";

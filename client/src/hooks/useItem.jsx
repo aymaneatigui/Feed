@@ -5,17 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const useItem = (id) => {
   const { register, handleSubmit, reset } = useForm();
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const updateOnSubmit = (obj) => {
-    const data = Object.fromEntries(
-      Object.entries(obj).filter(([, value]) => value != undefined),
-    );
-    dispatch(updateItemAc({ id, data }));
-    reset();
-  };
+  const navigate = useNavigate()
+  
+  // Create
   const addOnSubmit = (data) => {
     if (data?.isAvailable) {
       data.isAvailable = data.isAvailable.toString();
@@ -25,10 +19,21 @@ const useItem = (id) => {
     navigate("/items")
   };
 
+  // Update
+  const updateOnSubmit = (obj) => {
+    const data = Object.fromEntries(
+      Object.entries(obj).filter(([, value]) => value != undefined),
+    );
+    dispatch(updateItemAc({ id, data }));
+    reset();
+  };
+
+  // Delete
   const deleteOnSubmit = () => {
     dispatch(deleteItemAc({id}));
     reset()
     navigate("/items")
+
   };
 
   return {

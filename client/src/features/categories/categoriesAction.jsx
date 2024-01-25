@@ -38,9 +38,10 @@ export const addCategoryAc = createAsyncThunk(
 
 export const updateCategoryAc = createAsyncThunk(
   "categories/updateCategory",
-  async ({ id, data }, { rejectWithValue }) => {
+  async (data, { rejectWithValue, dispatch }) => {
     try {
-      const res = await api.put(`${category_url}/${id}`, data);
+      const res = await api.put(`${category_url}`, data);
+      dispatch(getCategoriesAc())
       return res.data;
     } catch (error) {
       if (!error.response?.data?.message) {

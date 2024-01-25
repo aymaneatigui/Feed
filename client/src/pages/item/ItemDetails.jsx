@@ -3,14 +3,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import useItems from "../../hooks/useItems.jsx";
 import useItem from "../../hooks/useItem.jsx";
 import SideBar from "../SideBar.jsx";
+import DeletingModal from "../../modals/DeletingModal.jsx";
+import Modal from "../../modals/modal.jsx";
 
 const ItemDetails = () => {
+  
   const navigate = useNavigate();
   const { itemId } = useParams();
+
   const { findItemById } = useItems();
   const { register, updateItem, deleteItem, reset } = useItem(itemId);
-  const [updating, setUpdating] = useState(false);
+
   const [item, setItem] = useState({});
+  const [updating, setUpdating] = useState(false);
+  const [deletingModal, setDeletingModal] = useState();
 
   useEffect(() => {
     const res = findItemById(itemId);
@@ -47,8 +53,19 @@ const ItemDetails = () => {
               </svg>
             </div>
             {/* Remevie Icon */}
+            {deletingModal && (
+              <Modal>
+                <DeletingModal
+                  id={itemId}
+                  item={item?.label}
+                  closeModal={() => setDeletingModal(false)}
+                  deleteFn={deleteItem}
+                />
+              </Modal>
+            )}
+
             <div
-              onClick={deleteItem}
+              onClick={() => setDeletingModal(true)}
               className="group ml-3 flex cursor-pointer select-none justify-center rounded-md border border-slate-900/30 p-1 duration-300 ease-in-out hover:items-end hover:border-red-400 hover:bg-gray-300/50 "
             >
               <svg

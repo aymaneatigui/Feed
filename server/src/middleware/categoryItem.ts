@@ -20,13 +20,6 @@ export const getCategoryItem = async (req, res, next) => {
 // Add CategoryItem
 export const addCategoryItem = async (req, res, next) => {
   try {
-    // Check if user provide Category and Item ID
-    if (!req.body?.itemId || !req.body?.categoryId) {
-      const err = new Error("category or item ID is missing");
-      err.name = "BadRequestError";
-      next(err);
-    }
-
     //Check if Category exsit
     // const categorieExsit = await checkCategoryId(req.body.categoryId);
     // if (!categorieExsit) {
@@ -43,15 +36,35 @@ export const addCategoryItem = async (req, res, next) => {
     //   next(err);
     // }
 
-    const position = parseInt(req.body?.position);
+    let datalist = req.body;
+    // Check if datalist is not an array
+    if (!Array.isArray(datalist)) {
+      datalist = [datalist];
+    }
+    await prisma.$transaction(async (prisma) => {
+      for (const data of datalist) {
+        // Check if user provide Category and Item ID
+        if (!data?.itemId || !data?.categoryId) {
+          const err = new Error("category or item ID is missing");
+          err.name = "BadRequestError";
+          next(err);
+        }
 
-    const categoryItem = await prisma.categoryItem.create({
-      data: { ...req.body, position },
+        const { itemId, categoryId, position } = data;
+        // Check if position is a string and parse it
+        const parsedPosition =
+          typeof position === "string" ? parseInt(position) : position;
+
+        await prisma.categoryItem.create({
+          data: { itemId, categoryId, position: parsedPosition },
+        });
+      }
     });
 
-    res.status(201).json({ data: categoryItem });
+    res.status(201).json({ message: "created successfully" });
     next();
   } catch (error) {
+    console.log(error)
     console.error(error);
     const err = new Error("error in addCategoryItem");
     err.name = "BadRequestError";
@@ -107,7 +120,7 @@ export const deleteCategoryItem = async (req, res, next) => {
     res.status(204).send();
     next();
   } catch (error) {
-    console.error(error)
+    console.error(error);
     const err = new Error("error in deleteCategoryItem");
     err.name = "BadRequestError";
     return next(err);

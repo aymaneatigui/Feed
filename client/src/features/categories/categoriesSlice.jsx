@@ -11,7 +11,7 @@ const initialState = {
   status: "idle",
   categories: localStorage.getItem("categories")
     ? JSON.parse(localStorage.getItem("categories"))
-    : null,
+    : [],
 };
 
 const categories = createSlice({
@@ -28,6 +28,10 @@ const categories = createSlice({
       .addCase(getCategoriesAc.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.categories = action.payload.data;
+        state.categories = state.categories.sort(
+          (a, b) => a.position - b.position,
+        );
+
         state.error = null;
         localStorage.setItem("categories", JSON.stringify(state.categories));
       })
@@ -62,20 +66,9 @@ const categories = createSlice({
         state.status = "loading";
         state.error = null;
       })
-      .addCase(updateCategoryAc.fulfilled, (state, action) => {
+      .addCase(updateCategoryAc.fulfilled, (state) => {
         state.status = "succeeded";
         state.error = null;
-
-        const updatedCategory = action.payload.data;
-
-        //fidn the category index in the list
-        const categoryIndex = state.categories.findIndex(
-          (category) => category.id === updatedCategory.id,
-        );
-        if (categoryIndex !== -1)
-          state.categories[categoryIndex] = updatedCategory;
-
-        localStorage.setItem("categories", JSON.stringify(state.categories));
       })
       .addCase(updateCategoryAc.rejected, (state, action) => {
         state.status = "failed";

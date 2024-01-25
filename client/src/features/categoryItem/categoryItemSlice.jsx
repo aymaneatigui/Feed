@@ -11,7 +11,7 @@ const initialState = {
   status: "idle",
   categoryItem: localStorage.getItem("categoryItem")
     ? JSON.parse(localStorage.getItem("categoryItem"))
-    : null,
+    : [],
 };
 
 const categoryItem = createSlice({

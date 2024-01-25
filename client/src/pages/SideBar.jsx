@@ -10,9 +10,16 @@ const SideBar = () => {
   return (
     <aside className="hidden h-[calc(100vh-100px)] w-52 min-w-52 md:block">
       <div className="flex h-auto w-full flex-col pl-6 font-medium">
+      <Link
+          to={"/"}
+          className={`my-2 w-full rounded-r-md px-4  py-2 hover:bg-gray-300/50 hover:border-l-zinc-500 hover:border-l-4
+            ${activePage == "" && activeStyle}`}
+        >
+          Dashboard
+        </Link>
         <Link
           to={"/items"}
-          className={`mb-2 w-full rounded-r-md px-4 py-2 hover:bg-gray-300/50
+          className={`mb-2 w-full rounded-r-md px-4 py-2 hover:bg-gray-300/50 hover:border-l-zinc-500 hover:border-l-4
           ${(activePage === "items" || activePage === "item") && activeStyle}
           `}
         >
@@ -20,25 +27,19 @@ const SideBar = () => {
         </Link>
         <Link
           to={"/categories"}
-          className={`my-2 w-full rounded-md px-4 py-2 hover:bg-gray-300/50
+          className={`my-2 w-full rounded-r-md px-4 py-2 hover:bg-gray-300/50 hover:border-l-zinc-500 hover:border-l-4
             ${activePage == "categories" && activeStyle}`}
         >
           Categories
         </Link>
         <Link
           to={"/manager"}
-          className={`my-2 w-full rounded-md px-4  py-2 hover:bg-gray-300/50
+          className={`my-2 w-full rounded-r-md px-4  py-2 hover:bg-gray-300/50 hover:border-l-zinc-500 hover:border-l-4
             ${activePage == "manager" && activeStyle}`}
         >
           Manager
         </Link>
-        <Link
-          to={"/dashboard"}
-          className={`my-2 w-full rounded-md px-4  py-2 hover:bg-gray-300/50
-            ${activePage == "dashboard" && activeStyle}`}
-        >
-          Dashboard
-        </Link>
+
       </div>
     </aside>
   );

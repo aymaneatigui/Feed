@@ -33,26 +33,33 @@ export const addCategory = async (req, res, next) => {
 // Update Category
 export const updateCategory = async (req, res, next) => {
   try {
-    const categoryId = req.params?.categoryId;
+    let updates = Array.isArray(req.body) ? req.body : [req.body];
+    await prisma.$transaction(async (prisma) => {
+      for (const update of updates) {
+        const { id, position, label } = update;
+        let p = parseInt(position)
+        await prisma.categories.update({
+          where: { id },
+          data: {
+            position: p,
+            label: label
+          },
+        });
+      }
+    });
 
     //Check if Category exsit
-    const exsit = await checkCategoryId(categoryId);
-    if (!exsit) {
-      const err = new Error("this category dont exsit");
-      err.name = "NotFoundError";
-      next(err);
-    }
-    const categoryData = { ...req.body };
-    if (req.body?.position) {
-      categoryData.position = parseInt(req.body.position);
-    }
-    const category = await prisma.categories.update({
-      where: { id: categoryId },
-      data: categoryData,
-    });
-    res.status(200).json({ data: category });
+    // const exsit = await checkCategoryId(categoryId);
+    // if (!exsit) {
+    //   const err = new Error("this category dont exsit");
+    //   err.name = "NotFoundError";
+    //   next(err);
+    // }
+
+    res.status(200).json({ message: "updated successfully" });
     next();
   } catch (error) {
+    console.log(error);
     const err = new Error("error in updateCategory");
     err.name = "BadRequestError";
     return next(err);
