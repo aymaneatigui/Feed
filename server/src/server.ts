@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.status(200);
-  res.json({ message: "Get /" });
+  res.json({ message: "Welcome to Feed api /" });
 });
 
 
