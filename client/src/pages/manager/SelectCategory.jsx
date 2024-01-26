@@ -59,7 +59,64 @@ const SelectCategory = ({ mydata, setSelected }) => {
             className="h-full w-12 cursor-pointer  select-none rounded-r-3xl border  border-gray-300 bg-zinc-50 hover:bg-zinc-100"
           >
             <div className="flex h-full w-full items-center justify-center">
-              <img src="/cancel.svg" className="w-4" />
+              <div className="w-4">
+            <svg
+              fill="0f172a"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 4.233 4.233"
+              id="cross"
+            >
+              <g transform="translate(73.405 -1.965)">
+                <g>
+                  <g>
+                    <g>
+                      <g>
+                        <g>
+                          <g>
+                            <g>
+                              <g transform="translate(.273)">
+                                <g>
+                                  <g>
+                                    <g>
+                                      <g>
+                                        <g
+                                          strokeWidth=".374"
+                                          transform="matrix(.5 .5 -.5 .5 -33.877 37.684)"
+                                        >
+                                          <g>
+                                            <g transform="rotate(45 -71.288 4.081)">
+                                              <g transform="translate(.187 -.186)">
+                                                <g transform="rotate(45 -71.289 4.082)">
+                                                  <g>
+                                                    <path
+                                                      fill="none"
+                                                      stroke="#000"
+                                                      strokeLinecap="round"
+                                                      strokeLinejoin="round"
+                                                      d="M-71.290676 1.435854l.0011 5.8204881M-68.379882 4.346648l-5.820488-.0011"
+                                                      paintOrder="markers fill stroke"
+                                                    ></path>
+                                                  </g>
+                                                </g>
+                                              </g>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
             </div>
           </div>
         </div>

@@ -162,18 +162,6 @@ const UpdateCategoryModal = ({ closeModal, id }) => {
                   type="submit"
                   className="inline-flex w-full items-center justify-center rounded-lg bg-zinc-900  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-zinc-800 focus:outline-none focus:ring-4 "
                 >
-                  <svg
-                    className="-ms-1 me-1 h-5 w-5"
-                    fill="#fff"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
                   Update Category
                 </button>
               </div>

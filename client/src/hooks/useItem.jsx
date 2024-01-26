@@ -42,12 +42,17 @@ const useItem = (id) => {
     navigate("/items");
   };
 
+  const cancel = () => {
+    navigate("/items");
+  };
+
   return {
     register,
     reset,
     addItem: handleSubmit(addOnSubmit),
     updateItem: handleSubmit(updateOnSubmit),
     deleteItem: handleSubmit(deleteOnSubmit),
+    cancel
   };
 };
 

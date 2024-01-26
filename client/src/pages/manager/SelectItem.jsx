@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 const SelectItem = ({ mydata, setSelected }) => {
   const node = useRef();
-  const sortedData = mydata.slice().sort((a, b) => a.label.localeCompare(b.label));
+  const sortedData = mydata
+    .slice()
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   const handleClickOutside = (e) => {
     if (node.current.contains(e.target)) {
@@ -64,9 +66,67 @@ const SelectItem = ({ mydata, setSelected }) => {
                             e.stopPropagation();
                             removeItem(item);
                           }}
-                          className="flex h-full w-full items-center justify-center rounded-full bg-red-400 p-1 hover:bg-red-500"
+                          className="flex h-full w-full items-center justify-center rounded-full bg-red-500 p-1 hover:bg-red-600"
                         >
-                          <img src="/cancelw.svg" className="w-3" />
+                          <div className="w-3">
+                            <svg
+                              fill="#ffffff"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 4.233 4.233"
+                              id="cross"
+                            >
+                              <g transform="translate(73.405 -1.965)">
+                                <g>
+                                  <g>
+                                    <g>
+                                      <g>
+                                        <g>
+                                          <g>
+                                            <g>
+                                              <g transform="translate(.273)">
+                                                <g>
+                                                  <g>
+                                                    <g>
+                                                      <g>
+                                                        <g
+                                                          strokeWidth=".374"
+                                                          transform="matrix(.5 .5 -.5 .5 -33.877 37.684)"
+                                                        >
+                                                          <g>
+                                                            <g transform="rotate(45 -71.288 4.081)">
+                                                              <g transform="translate(.187 -.186)">
+                                                                <g transform="rotate(45 -71.289 4.082)">
+                                                                  <g>
+                                                                    <path
+                                                                      fill="none"
+                                                                      stroke="#fff  "
+                                                                      strokeWidth="0.6"
+                                                                      strokeLinecap="round"
+                                                                      strokeLinejoin="round"
+                                                                      d="M-71.290676 1.435854l.0011 5.8204881M-68.379882 4.346648l-5.820488-.0011"
+                                                                      paintOrder="markers fill stroke"
+                                                                    ></path>
+                                                                  </g>
+                                                                </g>
+                                                              </g>
+                                                            </g>
+                                                          </g>
+                                                        </g>
+                                                      </g>
+                                                    </g>
+                                                  </g>
+                                                </g>
+                                              </g>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -82,7 +142,64 @@ const SelectItem = ({ mydata, setSelected }) => {
             className="h-full w-12 cursor-pointer select-none rounded-r-3xl border  border-gray-300 bg-zinc-50 hover:bg-zinc-100"
           >
             <div className="flex h-full w-full items-center justify-center">
-              <img src="/cancel.svg" className="w-4" />
+              <div className="w-4">
+                <svg
+                  fill="0f172a"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 4.233 4.233"
+                  id="cross"
+                >
+                  <g transform="translate(73.405 -1.965)">
+                    <g>
+                      <g>
+                        <g>
+                          <g>
+                            <g>
+                              <g>
+                                <g>
+                                  <g transform="translate(.273)">
+                                    <g>
+                                      <g>
+                                        <g>
+                                          <g>
+                                            <g
+                                              strokeWidth=".374"
+                                              transform="matrix(.5 .5 -.5 .5 -33.877 37.684)"
+                                            >
+                                              <g>
+                                                <g transform="rotate(45 -71.288 4.081)">
+                                                  <g transform="translate(.187 -.186)">
+                                                    <g transform="rotate(45 -71.289 4.082)">
+                                                      <g>
+                                                        <path
+                                                          fill="none"
+                                                          stroke="#000"
+                                                          strokeLinecap="round"
+                                                          strokeLinejoin="round"
+                                                          d="M-71.290676 1.435854l.0011 5.8204881M-68.379882 4.346648l-5.820488-.0011"
+                                                          paintOrder="markers fill stroke"
+                                                        ></path>
+                                                      </g>
+                                                    </g>
+                                                  </g>
+                                                </g>
+                                              </g>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -96,7 +213,7 @@ const SelectItem = ({ mydata, setSelected }) => {
           onChange={() => setDropdown(!dropdown)}
         />
 
-        <div className="myScrollbar z-20 absolute mt-1 hidden max-h-52 w-full flex-col overflow-hidden overflow-y-auto rounded-xl border border-gray-200 bg-white shadow peer-checked:flex">
+        <div className="myScrollbar absolute z-20 mt-1 hidden max-h-52 w-full flex-col overflow-hidden overflow-y-auto rounded-xl border border-gray-200 bg-white shadow peer-checked:flex">
           {mydata.length > 0 ? (
             sortedData?.map((item) => {
               return (
