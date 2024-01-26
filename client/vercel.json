@@ -11,24 +11,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*).js",
-      "dest": "/$1.js"
-    },
-    {
-      "src": "/(.*).css",
-      "dest": "/$1.css"
-    },
-    {
-      "src": "/(.*).html",
-      "dest": "/$1.html"
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
-    },
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
     }
   ]
 }
