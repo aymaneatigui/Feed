@@ -32,7 +32,7 @@ const ItemDetails = () => {
       <SideBar />
       <div className="mx-3 flex h-full w-full flex-col overflow-hidden">
         <div className="mb-3 flex w-full items-center justify-between px-5">
-          <div>{"Items > Coffee"}</div>
+          {/* <div>{"Items > Coffee"}</div> */}
           <div className="flex">
             {/* Edit Icon */}
             <div
