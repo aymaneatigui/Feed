@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const item_url = `http://localhost:3001/api/item`;
+const item_url = `https://feed-server-sm67.onrender.com/api/item`;
 const api = axios.create({
   headers: { "Cache-Control": "no-cache" },
 });
