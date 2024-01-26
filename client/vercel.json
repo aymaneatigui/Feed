@@ -11,8 +11,16 @@
   ],
   "routes": [
     {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/screenshots/(.*)",
+      "dest": "/screenshots/$1"
+    },
+    {
+      "src": "/(.*).(svg|png)",
+      "dest": "/$1.$2"
     },
     {
       "src": "/(.*)",
