@@ -1,8 +1,13 @@
-import prisma from "../database/database";
+import { Response, Request, NextFunction } from "express";
+import prisma, { categories, items } from "../database/database";
 import { indexByCategory } from "../utils/indexing";
 
 // Get CategoryItem
-export const getCategoryItem = async (req, res, next) => {
+export const getCategoryItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const categoryItem = await prisma.categoryItem.findMany({});
 
@@ -18,7 +23,11 @@ export const getCategoryItem = async (req, res, next) => {
 };
 
 // Add CategoryItem
-export const addCategoryItem = async (req, res, next) => {
+export const addCategoryItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     //Check if Category exsit
     // const categorieExsit = await checkCategoryId(req.body.categoryId);
@@ -64,7 +73,7 @@ export const addCategoryItem = async (req, res, next) => {
     res.status(201).json({ message: "created successfully" });
     next();
   } catch (error) {
-    console.log(error)
+    console.log(error);
     console.error(error);
     const err = new Error("error in addCategoryItem");
     err.name = "BadRequestError";
@@ -73,7 +82,11 @@ export const addCategoryItem = async (req, res, next) => {
 };
 
 // Update CategoryItem
-export const updateCategoryItem = async (req, res, next) => {
+export const updateCategoryItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     let updates = req.body;
     // Check if updates is not an array
@@ -104,7 +117,11 @@ export const updateCategoryItem = async (req, res, next) => {
 };
 
 // Delete CategoryItem
-export const deleteCategoryItem = async (req, res, next) => {
+export const deleteCategoryItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     let CategoryItemIds = req.body;
 
@@ -128,11 +145,13 @@ export const deleteCategoryItem = async (req, res, next) => {
 };
 
 //Check if Item exsit
-export const checkCategoryId = async (id) => {
+export const checkCategoryId = async (
+  id: string
+): Promise<categories | null> => {
   return await prisma.categories.findUnique({ where: { id } });
 };
 
 //Check if Item exsit
-export const checkItemId = async (id) => {
+export const checkItemId = async (id: string): Promise<items | null> => {
   return await prisma.items.findUnique({ where: { id } });
 };

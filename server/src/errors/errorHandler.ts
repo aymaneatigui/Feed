@@ -1,4 +1,15 @@
-const errorHandler = (err, req, res, next) => {
+import { Response, request, NextFunction, ErrorRequestHandler } from "express";
+
+interface ErrorWithStatus extends Error {
+  status?: number;
+}
+
+const errorHandler: ErrorRequestHandler = (
+  err: ErrorWithStatus,
+  req,
+  res,
+  next
+): void => {
   if (err.name === "BadRequestError") {
     res.status(400).json({ status: "error", message: err.message });
   } else if (err.name === "UnauthorizedError") {
