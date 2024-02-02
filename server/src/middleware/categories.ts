@@ -1,7 +1,12 @@
-import prisma from "../database/database";
+import { Request, Response, NextFunction } from "express";
+import prisma, { categories } from "../database/database";
 
 // Get Categorie
-export const getCategories = async (req, res, next) => {
+export const getCategories = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const categories = await prisma.categories.findMany({});
     res.status(200).json({ data: categories });
@@ -14,7 +19,11 @@ export const getCategories = async (req, res, next) => {
 };
 
 // Add Category
-export const addCategory = async (req, res, next) => {
+export const addCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const position = parseInt(req.body?.position);
     const category = await prisma.categories.create({
@@ -31,18 +40,22 @@ export const addCategory = async (req, res, next) => {
 };
 
 // Update Category
-export const updateCategory = async (req, res, next) => {
+export const updateCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     let updates = Array.isArray(req.body) ? req.body : [req.body];
     await prisma.$transaction(async (prisma) => {
       for (const update of updates) {
         const { id, position, label } = update;
-        let p = parseInt(position)
+        let p = parseInt(position);
         await prisma.categories.update({
           where: { id },
           data: {
             position: p,
-            label: label
+            label: label,
           },
         });
       }
@@ -65,7 +78,11 @@ export const updateCategory = async (req, res, next) => {
     return next(err);
   }
 };
-export const deleteCategory = async (req, res, next) => {
+export const deleteCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const categoryId = req.params?.categoryId;
     //Check if Category exsit
@@ -93,6 +110,8 @@ export const deleteCategory = async (req, res, next) => {
 };
 
 //Check if Item exsit
-export const checkCategoryId = async (id) => {
+export const checkCategoryId = async (
+  id: string
+): Promise<categories | null> => {
   return await prisma.categories.findUnique({ where: { id } });
 };

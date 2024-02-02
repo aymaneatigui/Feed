@@ -1,7 +1,12 @@
-import prisma from "../database/database";
+import { Request, Response, NextFunction } from "express";
+import prisma, { items } from "../database/database";
 
 // Get Items
-export const getItems = async (req, res, next) => {
+export const getItems = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const items = await prisma.items.findMany({});
     res.status(200).json({ data: items });
@@ -14,10 +19,15 @@ export const getItems = async (req, res, next) => {
 };
 
 // Add Items
-export const addItem = async (req, res, next) => {
+export const addItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const price = parseFloat(req.body.price);
-    const isAvailable = req.body?.isAvailable.toString().toLowerCase() === "true";
+    const isAvailable =
+      req.body?.isAvailable.toString().toLowerCase() === "true";
 
     const item = await prisma.items.create({
       data: { ...req.body, price, isAvailable },
@@ -32,7 +42,11 @@ export const addItem = async (req, res, next) => {
 };
 
 // Update Items
-export const updateItem = async (req, res, next) => {
+export const updateItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const itemId = req.params.itemId;
 
@@ -67,7 +81,11 @@ export const updateItem = async (req, res, next) => {
 };
 
 // Delete Items
-export const deleteItem = async (req, res, next) => {
+export const deleteItem = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const itemId = req.params?.itemId;
 
@@ -93,6 +111,6 @@ export const deleteItem = async (req, res, next) => {
 };
 
 //Check if Item exsit
-export const checkItemId = async (id) => {
+export const checkItemId = async (id: string): Promise<items | null> => {
   return await prisma.items.findUnique({ where: { id } });
 };
