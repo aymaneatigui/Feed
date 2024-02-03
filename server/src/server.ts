@@ -12,12 +12,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.status(200);
-  res.json({ message: "Welcome to Feed api /" });
-});
-
-
 app.use("/api", routes);
 app.use(errorHandler)
 
