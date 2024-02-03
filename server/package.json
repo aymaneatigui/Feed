@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "nodemon dist/index.js",
+    "start": "nodemon ./dist/index.js",
     "dev:prod": "cross-env STAGE=production ts-node src/index.ts",
     "dev:test": "cross-env STAGE=testing ts-node src/index.ts"
   },
@@ -28,7 +27,7 @@
     "@types/express": "^4.17.21",
     "@types/lodash.merge": "^4.6.9",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.16",
     "nodemon": "^3.0.3",
     "prisma": "^5.8.1",
     "ts-node": "^10.9.2",
