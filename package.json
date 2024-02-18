@@ -1,0 +1,15 @@
+{
+  "name": "feed",
+  "version": "1.0.0",
+  "scripts": {
+    "docker": "docker-compose up -d",
+    "stop:docker": "docker-compose down",
+    "predev": "npm list concurrently  || npm i concurrently -no-fund  && cd client && npm install -no-fund && cd ../server && npm install -no-fund && cd ..",
+    "dev": "concurrently -n \"client,server\" -c \"cyan.italic,yellow.italic\" \"npm --prefix ./client run dev\" \"npm --prefix ./server run dev\"",
+    "preprod": "npm list concurrently || npm i concurrently -no-fund  && cd client && npm install -no-fund && cd ../server && npm install -no-fund && cd ..",
+    "prod": "concurrently -n \"client,server\" -c \"cyan.italic,yellow.italic\" \"npm --prefix ./client run dev:prod\" \"npm --prefix ./server run dev:prod\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

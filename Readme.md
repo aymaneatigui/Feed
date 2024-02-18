@@ -1,8 +1,7 @@
 # Feed
 
 <p align="center">
-  <img  height="280" src="client/public/header.png" style="  border-radius: 30px";
-">
+  <img  height="280" src="client/public/header.png" style="  border-radius: 30px;">
 </p>
 
 ## By [AYMANE ATIGUI](https://github.com/aymaneatigui).
@@ -10,7 +9,6 @@
 - Website - [https://atigui.tech](https://www.atigui.tech)
 - Linkedin - [aymaneatigui](https://www.linkedin.com/in/aymane-atigui)
 - Github - [aymaneatigui](https://github.com/aymaneatigui)
-- Twitter - [@aymane_atigui](https://twitter.com/aymane_atigui)
 
 ## Table of Contents
 
@@ -27,6 +25,7 @@
 This project requires the following software to be correctly installed on your system.
 
 - `node v20.9`
+
 - `npm  10.2.3`
 
 ## Server-Side Configuration
@@ -88,7 +87,7 @@ The project should now be up and running! If you encounter any issues, feel free
 
 # Data Modeling and Technology used
 
-<div style="display: flex; align-items: flex-start; justify-content: center;">
+<div style="display: flex; align-items: flex-center; justify-content: center;">
   <img height="270" src="client/public/screenshots/document.png" style="margin: 10px; border-radius: 15px;" alt="Data Modeling">
   <img height="270" src="client/public/screenshots/technolgoy.png" alt="Technologies Used" style="border-radius: 15px; margin: 10px; ">
 </div>
@@ -96,21 +95,21 @@ The project should now be up and running! If you encounter any issues, feel free
 # Screenshot
 
 <p align="center">
-  <img  height="370" src="client/public/screenshots/manager.png"  style="margin: 5px; border-radius: 15px;">
+  <img  width="100%" src="client/public/screenshots/manager.png"  style="margin: 5px; border-radius: 15px;">
 </p>
 
-<div style="display: flex; align-items: center; justify-content: center;">
-    <img  height="470" src="client/public/screenshots/additem.png"  style="margin: 5px; border-radius: 15px;">
-  <img  height="470" src="client/public/screenshots/modals.png"  style="margin: 5px; border-radius: 15px;">
+<div style="display: flex; align-items: center; justify-content: center; width=100%;">
+    <img  height="370" src="client/public/screenshots/additem.png"  style="margin: 5px; border-radius: 15px;">
+  <img  height="370" src="client/public/screenshots/modals.png"  style="margin: 5px; border-radius: 15px;">
 
 </div>
 
 <p align="center">
-  <img  height="370" src="client/public/screenshots/items.png"  style="margin: 5px; border-radius: 15px;">
+  <img  width="100%" src="client/public/screenshots/items.png"  style="margin: 5px; border-radius: 15px;">
 </p>
 
-<div style="display: flex; align-items: center; justify-content: center;">
-  <img  height="350" src="client/public/screenshots/update.png"  style="margin: 5px; border-radius: 15px;">
-    <img  height="400" src="client/public/screenshots/sidebar.png"  style="margin: 5px; border-radius: 15px;">
+<div style="display: flex; align-items: center; justify-content: center; width=100%;">
+  <img  height="300" src="client/public/screenshots/update.png"  style="margin: 5px; border-radius: 15px;">
+    <img  height="370" src="client/public/screenshots/sidebar.png"  style="margin: 5px; border-radius: 15px;">
 
 </div>

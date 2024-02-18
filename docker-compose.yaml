@@ -1,0 +1,65 @@
+services:
+  client:
+    build: ./client
+    container_name: client_c
+    env_file:
+      - ./client/.env.docker
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    depends_on:
+      - server
+  server:
+    build: ./server
+    container_name: server_c
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    env_file:
+      - ./server/.env.docker
+    networks:
+      - mongo_replica
+    depends_on:
+      - rs0
+      - rs1
+      - rs2
+  rs0:
+    container_name: rs0_c
+    image: mongo
+    ports:
+      - '27018:27017'
+    command: mongod --replSet "rs"
+    volumes:
+      - rs0_data:/data/db
+      - ./database/Data:/app-data/json
+    networks:
+      - mongo_replica
+  rs1:
+    container_name: rs1_c
+    image: mongo
+    ports:
+      - '27019:27017'
+    command: mongod --replSet "rs"
+    volumes:
+      - rs1_data:/data/db
+    networks:
+      - mongo_replica
+  rs2:
+    container_name: rs2_c
+    image: mongo
+    ports:
+      - '27020:27017'
+    command: mongod --replSet "rs"
+    volumes:
+      - rs2_data:/data/db
+    networks:
+      - mongo_replica
+volumes:
+  rs0_data:
+  rs1_data:
+  rs2_data:
+networks:
+  mongo_replica:
+    driver: bridge

@@ -1,14 +1,14 @@
 {
-  "name": "feed",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "dev": "cross-env NODE_ENV=development STAGE=dev nodemon --exec ts-node src/index.ts",
+    "dev:prod": "cross-env NODE_ENV=development STAGE=prod nodemon --exec ts-node src/index.ts",
+    "dev:docker": "cross-env NODE_ENV=docker nodemon --exec ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "nodemon ./dist/index.js",
-    "dev:prod": "cross-env STAGE=production ts-node src/index.ts",
-    "dev:test": "cross-env STAGE=testing ts-node src/index.ts"
+    "start": "nodemon ./dist/index.js"
   },
   "author": "aymaneatigui",
   "license": "ISC",
@@ -27,7 +27,7 @@
     "@types/express": "^4.17.21",
     "@types/lodash.merge": "^4.6.9",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^20.11.16",
+    "@types/node": "^20.11.5",
     "nodemon": "^3.0.3",
     "prisma": "^5.8.1",
     "ts-node": "^10.9.2",
