@@ -9,7 +9,7 @@
   @apply font-inter text-slate-900;
 }
 .myScrollbar {
-  @apply scroll-smooth scrollbar-thin scrollbar-thumb-zinc-300 scrollbar-thumb-rounded-lg hover:scrollbar-thumb-zinc-400;
+  @apply scroll-smooth scrollbar-thin scrollbar-thumb-zinc-300 scrollbar-thumb-rounded-md hover:scrollbar-thumb-zinc-400;
 }
 
 body {

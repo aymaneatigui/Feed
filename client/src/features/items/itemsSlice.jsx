@@ -13,15 +13,20 @@ function indexItemsById(items) {
   }, {});
 }
 
+const itemsLocalStorage = localStorage.getItem("items");
+const indexedItemsStorage = localStorage.getItem("indexedItems");
+
 const initialState = {
   error: null,
   status: "idle",
-  items: localStorage.getItem("items")
-    ? JSON.parse(localStorage.getItem("items"))
-    : [],
-  indexedItems: localStorage.getItem("indexedItems")
-    ? JSON.parse(localStorage.getItem("indexedItems"))
-    : [],
+  items:
+    itemsLocalStorage && itemsLocalStorage != "undefined"
+      ? JSON.parse(itemsLocalStorage)
+      : [],
+  indexedItems:
+    indexedItemsStorage && indexedItemsStorage != "undefined"
+      ? JSON.parse(indexedItemsStorage)
+      : [],
 };
 
 const items = createSlice({

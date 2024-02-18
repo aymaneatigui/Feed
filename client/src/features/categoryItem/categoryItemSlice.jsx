@@ -6,12 +6,14 @@ import {
   updateCategoryItemAc,
 } from "./categoryItemAction.jsx";
 
+const categoryItemFromStorage = localStorage.getItem("categoryItem");
 const initialState = {
   error: null,
   status: "idle",
-  categoryItem: localStorage.getItem("categoryItem")
-    ? JSON.parse(localStorage.getItem("categoryItem"))
-    : [],
+  categoryItem:
+    categoryItemFromStorage && categoryItemFromStorage !== "undefined"
+      ? JSON.parse(categoryItemFromStorage)
+      : [],
 };
 
 const categoryItem = createSlice({
