@@ -1,6 +1,7 @@
 services:
   client:
-    build: ./client
+    # build: ./client
+    image: aymaneatigui/feed-client
     container_name: client_c
     env_file:
       - ./client/.env.docker
@@ -10,10 +11,11 @@ services:
     depends_on:
       - server
   server:
-    build: ./server
+    # build: ./server
+    image: aymaneatigui/feed-server
     container_name: server_c
     ports:
-      - '3001:3001'
+      - "3001:3001"
     volumes:
       - ./server:/app
       - /app/node_modules
@@ -25,23 +27,24 @@ services:
       - rs0
       - rs1
       - rs2
+      - setupRs
+
   rs0:
     container_name: rs0_c
     image: mongo
     ports:
-      - '27018:27017'
-    command: mongod --replSet "rs"
+      - "27018:27017"
+    command: --replSet "rs"
     volumes:
       - rs0_data:/data/db
-      - ./database/Data:/app-data/json
     networks:
       - mongo_replica
   rs1:
     container_name: rs1_c
     image: mongo
     ports:
-      - '27019:27017'
-    command: mongod --replSet "rs"
+      - "27019:27017"
+    command: --replSet "rs"
     volumes:
       - rs1_data:/data/db
     networks:
@@ -50,10 +53,23 @@ services:
     container_name: rs2_c
     image: mongo
     ports:
-      - '27020:27017'
-    command: mongod --replSet "rs"
+      - "27020:27017"
+    command: --replSet "rs"
     volumes:
       - rs2_data:/data/db
+    networks:
+      - mongo_replica
+  setupRs:
+    container_name: setupRs_c
+    image: mongo
+    volumes:
+      - ./database/Data:/app-data/json
+      - ./database/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+    depends_on:
+      - rs0
+      - rs1
+      - rs2
+    command: bash /docker-entrypoint-initdb.d/init-mongo.sh
     networks:
       - mongo_replica
 volumes:

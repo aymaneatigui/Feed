@@ -1,0 +1,13 @@
+[
+{"_id":{"$oid":"65b255f336ea40e618840de9"},"label":"Pizza","position":1},
+{"_id":{"$oid":"65b25715f62374c4ed4ff576"},"label":"Pasta","position":2},
+{"_id":{"$oid":"65b25723f62374c4ed4ff577"},"label":"Salad","position":3},
+{"_id":{"$oid":"65b2572af62374c4ed4ff578"},"label":"Dessert","position":4},
+{"_id":{"$oid":"65b25731f62374c4ed4ff579"},"label":"Beverages","position":5},
+{"_id":{"$oid":"65b25738f62374c4ed4ff57a"},"label":"Appetizers","position":6},
+{"_id":{"$oid":"65b25740f62374c4ed4ff57b"},"label":"Sandwiches","position":0},
+{"_id":{"$oid":"65b25748f62374c4ed4ff57c"},"label":"Seafood","position":7},
+{"_id":{"$oid":"65b2574ff62374c4ed4ff57d"},"label":"Steak","position":8},
+{"_id":{"$oid":"65b25755f62374c4ed4ff57e"},"label":"Chicken Dishes","position":9},
+{"_id":{"$oid":"65b2575bf62374c4ed4ff57f"},"label":"Vegetarian Dishes","position":10}
+]
