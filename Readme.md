@@ -6,7 +6,7 @@
 
 ## By [AYMANE ATIGUI](https://github.com/aymaneatigui).
 
-- Website - [https://atigui.tech](https://www.atigui.tech)
+- Website  - [https://atigui.tech](https://www.atigui.tech)
 - Linkedin - [aymaneatigui](https://www.linkedin.com/in/aymane-atigui)
 - Github - [aymaneatigui](https://github.com/aymaneatigui)
 
